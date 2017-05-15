@@ -1,17 +1,42 @@
 ﻿@{
-    ViewBag.Title = "Survey";
+    ViewBag.Title = "Inquiry Form";
 }
 
-<h2>Survey</h2>
+<h2>Inquiry</h2>
 
-@Html.BeginForm()
+<div class="col-lg-4">
 
-<p>
-    <label for="FirstName">First Name:</label>
-    @Html.TextBox("FirstName")
-</p>
+    @using (Html.BeginForm())
+    {
+        <div class="form-group">
+            <label for="Username">Username:</label>
+            @Html.TextBox("Username", null, new { @class = "form-control" })
+        </div>
 
-<p>
-    <input type="submit" value="Register" />
-</p>
+        <div class="form-group">
+            <label for="Surname">Email:</label>
+            @Html.TextBox("Email", null, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            <label for="">What are you contacting us about?</label>
+            for each 
+            Technical Issue
+            Sales question
+            Partnership Inquiry
+        </div>
+
+
+        <div class="form-group">
+            <label for="">Comments:</label>
+            @Html.TextArea("Comments", null, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Send" />
+        </div>
+    }
+
+</div>
+
 
