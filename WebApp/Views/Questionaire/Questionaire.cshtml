@@ -1,0 +1,53 @@
+﻿@using System.Web.Mvc.Html;
+
+<h1>Questionaire</h1>
+
+@using (Html.BeginForm("ProcessQuestionaire", "Questionaire"))
+{
+
+    <p>How would you rate this website?</p>
+    <p>
+        @Html.Label("Awesome")
+        @Html.RadioButton("rating", "Awesome", false)
+    </p>
+    <p>
+        @Html.Label("Ok")
+        @Html.RadioButton("rating", "Ok", false)
+    </p>
+    <p>
+        @Html.Label("Average")
+        @Html.RadioButton("rating", "Average", false)
+    </p>
+    <p>
+        @Html.Label("Poor")
+        @Html.RadioButton("rating", "Poor", false)
+    </p>
+
+    <p>How did you hear about this course?</p>
+    <p>
+        @Html.Label("Through a Friend")
+        @Html.CheckBox("friend", false)
+    </p>
+
+    <p>
+        @Html.Label("Internet")
+        @Html.CheckBox("internet", false)
+    </p>
+
+    <p>
+        @Html.Label("Poster")
+        @Html.CheckBox("poster", false)
+    </p>
+
+    <p>Please select your preferred contact method</p>
+
+     @Html.DropDownList("contactMethod", new List<SelectListItem>
+     {
+        new SelectListItem{ Text="Phone", Value = "phone" },
+        new SelectListItem{ Text="Email", Value = "email" },
+        new SelectListItem{ Text="Facebook", Value = "facebook" },
+     })
+    <br />
+    <input type="submit" value="Submit" />
+
+}
