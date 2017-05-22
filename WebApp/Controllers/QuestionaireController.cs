@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WebApp.Models;
 
 namespace WebApp.Controllers
 {
@@ -15,19 +16,32 @@ namespace WebApp.Controllers
         [HttpGet]
         public ActionResult Questionaire()
         {
-            return View();
+            var qvm = new QuestionaireViewModel();
+            qvm.InformMethods = new List<SelectListItem>
+            {
+                new SelectListItem { Text = "Awesome", Value="1" },
+                new SelectListItem { Text = "Ok", Value = "2" },
+                new SelectListItem { Text = "Average", Value = "3" },
+                new SelectListItem { Text = "Poor", Value = "4" }
+            };
+            qvm.ContactMethods = new List<SelectListItem>
+            {
+                new SelectListItem{ Text="Phone", Value = "phone" },
+                new SelectListItem{ Text="Email", Value = "email" },
+                new SelectListItem{ Text="Facebook", Value = "facebook" }
+            };
+            return View(qvm);
         }
          
         [HttpPost]
-        public ActionResult ProcessQuestionaire(string rating, bool friend, bool internet, bool poster, string contactMethod )
+        public ActionResult ProcessQuestionaire(QuestionaireViewModel questionaire)
         {
-            ViewBag.ContactMethod = contactMethod;
-            var list = new List<String>();
-            if (friend) list.Add("friend");
-            if (internet) list.Add("internet");
-            if (poster) list.Add("poster");
-            ViewBag.InformMethods = list;
-            return View(); 
+            ViewBag.ContactMethod = questionaire.ContactMethods;
+            // if (questionaire.friend) list.Add("friend");
+            // if (questionaire.internet) list.Add("internet");
+            // if (questionaire.poster) list.Add("poster");
+            // ViewBag.InformMethods = list;
+            return View(questionaire); 
         }
 
     }

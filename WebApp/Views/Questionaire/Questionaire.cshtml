@@ -1,4 +1,4 @@
-﻿@using System.Web.Mvc.Html;
+﻿@model WebApp.Models.QuestionaireViewModel
 
 <h1>Questionaire</h1>
 
@@ -6,47 +6,24 @@
 {
 
     <p>How would you rate this website?</p>
-    <p>
-        @Html.Label("Awesome")
-        @Html.RadioButton("rating", "Awesome", false)
-    </p>
-    <p>
-        @Html.Label("Ok")
-        @Html.RadioButton("rating", "Ok", false)
-    </p>
-    <p>
-        @Html.Label("Average")
-        @Html.RadioButton("rating", "Average", false)
-    </p>
-    <p>
-        @Html.Label("Poor")
-        @Html.RadioButton("rating", "Poor", false)
-    </p>
 
-    <p>How did you hear about this course?</p>
-    <p>
-        @Html.Label("Through a Friend")
-        @Html.CheckBox("friend", false)
-    </p>
-
-    <p>
-        @Html.Label("Internet")
-        @Html.CheckBox("internet", false)
-    </p>
-
-    <p>
-        @Html.Label("Poster")
-        @Html.CheckBox("poster", false)
-    </p>
+    foreach (SelectListItem item in Model.InformMethods)
+    {
+        <p>
+           @Html.Label(item.Text)
+           @Html.CheckBox(item.Text, item.Value)
+        </p>
+    }
 
     <p>Please select your preferred contact method</p>
+    foreach (SelectListItem item in Model.ContactMethods)
+    {
+        <p>
+            @Html.Label(item.Text)
+            @Html.RadioButton("InformMethod", item.Value)
+        </p>
+    }
 
-     @Html.DropDownList("contactMethod", new List<SelectListItem>
-     {
-        new SelectListItem{ Text="Phone", Value = "phone" },
-        new SelectListItem{ Text="Email", Value = "email" },
-        new SelectListItem{ Text="Facebook", Value = "facebook" },
-     })
     <br />
     <input type="submit" value="Submit" />
 
