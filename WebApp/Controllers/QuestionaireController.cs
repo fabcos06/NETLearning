@@ -17,7 +17,7 @@ namespace WebApp.Controllers
         {
             return View();
         }
-
+         
         [HttpPost]
         public ActionResult ProcessQuestionaire(string rating, bool friend, bool internet, bool poster, string contactMethod )
         {
