@@ -60,7 +60,7 @@ namespace WebApp.Controllers
                 return View();
             }
 
-            var user = await userManager.FindAsync(model.Email, model.Password);
+            var user = await userManager.FindAsync(model.UserName, model.Password);
 
             if (user != null)
             {
@@ -73,7 +73,7 @@ namespace WebApp.Controllers
             }
 
             // user authN failed
-            ModelState.AddModelError("", "Invalid email or password");
+            ModelState.AddModelError("", "Invalid Username or password");
             return View();
         }
 

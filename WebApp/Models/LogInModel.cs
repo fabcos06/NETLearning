@@ -11,7 +11,7 @@ namespace WebApp
     {
         [Required]
         [DataType(DataType.Text)]
-        public string Email { get; set; }
+        public string UserName { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
@@ -20,4 +20,5 @@ namespace WebApp
         [HiddenInput]
         public string ReturnUrl { get; set; }
     }
+
 }

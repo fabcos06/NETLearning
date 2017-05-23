@@ -20,7 +20,7 @@ namespace WebApp
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
 
-            seedIdentityDatabase();
+            //seedIdentityDatabase();
         }
 
         private void seedIdentityDatabase()
