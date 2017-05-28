@@ -43,16 +43,18 @@ namespace WebApp
                 new UserStore<ApplicationUser>(new ApplicationDbContext())
             );
 
+            // online guid generator for obtaining guid values - https://guidgenerator.com/online-guid-generator.aspx
+
             var roles = new List<IdentityRole> {
-                new IdentityRole { Name = "Admin" },
-                new IdentityRole { Name = "User" }
+                new IdentityRole { Name = "Admin", Id="8a2b95a9-e013-4b2e-9c55-e2e12d64988b" },
+                new IdentityRole { Name = "User", Id="b331a774-ca3f-4d94-b799-17899a7dd716" }
             };
 
             var users = new List<ApplicationUser>
             {
-                new ApplicationUser{ UserName="mark", Email="mark@mark.com" },
-                new ApplicationUser{ UserName="dave", Email="dave@dave.com" },
-                new ApplicationUser{ UserName="sarah", Email="dave@mark.com" }
+                new ApplicationUser{ UserName="mark", Email="mark@mark.com", Id="b2cfcc69-1959-4913-ae78-070d5e60af05" },
+                new ApplicationUser{ UserName="dave", Email="dave@dave.com", Id="8b7efdb4-e0c8-40d0-ac17-4ab34c9da983" },
+                new ApplicationUser{ UserName="sarah", Email="sarah@sarah.com", Id="92f20888-702a-4b64-aad0-ffbd32462e2e" }
             };
 
             foreach (IdentityRole role in roles)
