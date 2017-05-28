@@ -4,8 +4,9 @@
 
 }
 
-<h1>Welcome to Web App</h1>
+@if (Request.IsAuthenticated)
+{
+    <p>Welcome to the Web App site @User.Identity.Name</p>
+}
 
-<p>
-    Hello @User.Identity.Name
-</p>
+
