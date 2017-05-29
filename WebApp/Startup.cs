@@ -5,8 +5,7 @@ using WebApp.Models;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.Collections.Generic;
-
-
+using System.Linq;
 
 [assembly: OwinStartup(typeof(WebApp.Startup))]
 
@@ -43,12 +42,35 @@ namespace WebApp
                 new UserStore<ApplicationUser>(new ApplicationDbContext())
             );
 
-            // online guid generator for obtaining guid values - https://guidgenerator.com/online-guid-generator.aspx
+            // get a list of existing application users and delete 
+            List<ApplicationUser> currentUsers = userManager.Users.ToList();
+            if (currentUsers != null)
+            {
+                foreach (ApplicationUser currentUser in currentUsers)
+                {
+                    userManager.Delete(currentUser);
+                }
+            }
+
+
+            List<IdentityRole> currentRoles = roleManager.Roles.ToList();
+            if (currentRoles != null)
+            {
+                foreach (IdentityRole currentRole in currentRoles)
+                {
+                    roleManager.Delete(currentRole);
+                }
+            }
+
+
+            // add new roles and users
 
             var roles = new List<IdentityRole> {
-                new IdentityRole { Name = "Admin", Id="8a2b95a9-e013-4b2e-9c55-e2e12d64988b" },
-                new IdentityRole { Name = "User", Id="b331a774-ca3f-4d94-b799-17899a7dd716" }
+                new IdentityRole { Name = "Admin" },
+                new IdentityRole { Name = "User" }
             };
+
+            // online guid generator for obtaining guid values - https://guidgenerator.com/online-guid-generator.aspx
 
             var users = new List<ApplicationUser>
             {
