@@ -53,16 +53,6 @@ namespace WebApp
             }
 
 
-            List<IdentityRole> currentRoles = roleManager.Roles.ToList();
-            if (currentRoles != null)
-            {
-                foreach (IdentityRole currentRole in currentRoles)
-                {
-                    roleManager.Delete(currentRole);
-                }
-            }
-
-
             // add new roles and users
 
             var roles = new List<IdentityRole> {
