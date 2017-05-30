@@ -5,6 +5,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using WebApp.Models;
+using WebApp.Helpers;
 
 
 namespace WebApp.Controllers
@@ -78,6 +79,8 @@ namespace WebApp.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
+                    int a = 10;
+                    Logger.addEvent(User.Identity.GetUserId(), "login");              
                     return RedirectToAction("Index", "Home");
                 case SignInStatus.Failure:
                 default:
