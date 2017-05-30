@@ -22,9 +22,9 @@ namespace WebApp.Helpers
             paramEventType.DbType = DbType.DateTime;
             paramEventDate.DbType = DbType.String;
             paramUserId.Value = id;
-            paramEventType.Value = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
+            paramEventDate.Value = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
             paramEventType.Value = eventType;
-            paramUserId.ParameterName = "user_id"; paramEventDate.ParameterName = "event_date"; paramEventDate.ParameterName = "event_type";
+            paramUserId.ParameterName = "user_id"; paramEventDate.ParameterName = "event_date"; paramEventType.ParameterName = "event_type";
             dbcommand.Parameters.Add(paramUserId);
             dbcommand.Parameters.Add(paramEventType);
             dbcommand.Parameters.Add(paramEventDate);
