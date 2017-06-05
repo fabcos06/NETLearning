@@ -23,12 +23,14 @@ namespace WebApp.Helpers
             paramEventType.SqlDbType = SqlDbType.DateTime;
             paramEventDate.SqlDbType = SqlDbType.Text;
             paramUserId.Value = new Guid(id);
-            paramEventDate.Value = DateTime.Now.ToString("YYYY-MM-DDThh:mm:ss");
+            var datestring = DateTime.Now.ToString("yyyy-mm-dd HH:mm:ss:fff");
+                //DateTime.ParseExact(DateTime.Now.ToString(), "YYYY-MM-DDThh:mm:ss.fff", null);
+            paramEventDate.Value = datestring;
             paramEventType.Value = eventType;
             paramUserId.ParameterName = "user_id"; paramEventDate.ParameterName = "event_date"; paramEventType.ParameterName = "event_type";
             dbcommand.Parameters.Add(paramUserId);
-            dbcommand.Parameters.Add(paramEventType);
             dbcommand.Parameters.Add(paramEventDate);
+            dbcommand.Parameters.Add(paramEventType);
             dbcon.Open();
             var result = dbcommand.ExecuteNonQuery();
             dbcon.Close();
