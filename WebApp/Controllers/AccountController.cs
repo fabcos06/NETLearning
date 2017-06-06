@@ -80,7 +80,8 @@ namespace WebApp.Controllers
             {
                 case SignInStatus.Success:
                     ApplicationUser user = UserManager.FindByName(model.UserName);
-                    Logger.addEvent(user.Id, "login");              
+                    Logger logger = new Logger();
+                    logger.addEvent(user.Id, "login");              
                     return RedirectToAction("Index", "Home");
                 case SignInStatus.Failure:
                 default:

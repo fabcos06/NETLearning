@@ -1,0 +1,27 @@
+﻿@using WebApp.Models
+@model List<AppEvent>
+
+<h1>Events</h1>
+
+<table border="1" cellspacing="0" cellpadding="15">
+    <tr>
+        <th>User Id</th>
+        <th>Event Date</th>
+        <th>Event Type</th>
+    </tr>
+        @foreach (var appEvent in Model)
+        {
+            <tr>
+            <td>
+                @appEvent.user_id
+            </td>
+            <td>
+                @appEvent.event_date
+            </td>
+            <td>
+                @appEvent.event_type
+            </td>
+            </tr>
+        }
+
+</table>
